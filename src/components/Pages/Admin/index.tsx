@@ -1,11 +1,15 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Drawer from 'components/Layout/Drawer';
 import AccountMultipleIcon from 'mdi-react/AccountMultipleIcon';
+import ApplicationIcon from 'mdi-react/ApplicationIcon';
+import List from 'mdi-react/FormatListBulletedIcon';
 import StarIcon from 'mdi-react/StarIcon';
 import ViewDashboardIcon from 'mdi-react/ViewDashboardIcon';
 import React, { memo, useCallback, useRef, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import OrderIndexPage from '../Admin/Orders';
+import OrderListPage from '../Admin/Orders/list';
 import DashboardIndexPage from './Dashboard';
 import SamplePage from './Sample';
 import UserIndexPage from './Users';
@@ -43,7 +47,9 @@ const AdminPage = memo((props: {}) => {
       // role: enRoles.admin,
       icon: AccountMultipleIcon
     },
-    { path: '/exemplos', display: 'Exemplos', icon: StarIcon }
+    { path: '/exemplos', display: 'Exemplos', icon: StarIcon },
+    { path: '/pedidos', display: 'Pedidos', icon: ApplicationIcon },
+    { path: '/pedidos/lista', display: 'Lista de Pedidos', icon: List }
   ]);
 
   const scrollTop = useCallback(() => setTimeout(() => mainContent.current.scrollTo(0, 0), 100), []);
@@ -57,6 +63,8 @@ const AdminPage = memo((props: {}) => {
             <Switch>
               <Route path='/exemplos' component={SamplePage} />
               <Route path='/usuarios' component={UserIndexPage} />
+              <Route path='/pedidos/lista' component={OrderListPage} />
+              <Route path='/pedidos' component={OrderIndexPage} />
               <Route path='/' component={DashboardIndexPage} />
               <Route render={renderRedirect} />
             </Switch>

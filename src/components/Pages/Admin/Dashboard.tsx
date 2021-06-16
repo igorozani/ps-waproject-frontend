@@ -49,7 +49,6 @@ const DashboardIndexPage = memo((props: {}) => {
   return (
     <Fragment>
       <Toolbar title='Dashboard' />
-
       <Grid container spacing={3} className={classes.marginBottom}>
         <Grid item xs={12} md={4} lg={6}>
           <Card>
@@ -106,7 +105,6 @@ const DashboardIndexPage = memo((props: {}) => {
           </Card>
         </Grid>
       </Grid>
-
       <Card>
         <CardContent>
           <Typography gutterBottom variant='h5'>
